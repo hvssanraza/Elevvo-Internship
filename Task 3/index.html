@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TaskFlow - Organize Your Tasks</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header id="header">
+        <div class="container">
+            <nav>
+                <a href="#" class="logo">
+                    <i class="fas fa-tasks"></i>
+                    <span>TaskFlow</span>
+                </a>
+                <ul class="nav-links" id="nav-links">
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#testimonials">Testimonials</a></li>
+                    <li><a href="#pricing">Pricing</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <button class="hamburger-menu" id="hamburger-menu" aria-label="Toggle Menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h1>Organize Your Tasks, Simplify Your Life</h1>
+                <p>TaskFlow helps you manage your tasks efficiently so you can focus on what matters most.</p>
+                <a href="#pricing" class="btn">Get Started Now</a>
+            </div>
+        </section>
+
+        <section class="features" id="features">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Powerful Features, Effortless Control</h2>
+                    <p>Everything you need to stay organized and productive, beautifully designed.</p>
+                </div>
+                <div class="features-grid">
+                    <div class="feature-card animated-card">
+                        <div class="feature-icon"><i class="fas fa-list-check"></i></div>
+                        <h3>Smart Task Management</h3>
+                        <p>Create, organize, and prioritize tasks with drag-and-drop simplicity.</p>
+                    </div>
+                    <div class="feature-card animated-card">
+                        <div class="feature-icon"><i class="fas fa-bell"></i></div>
+                        <h3>Intelligent Reminders</h3>
+                        <p>Never miss a deadline with customizable notifications and smart alerts.</p>
+                    </div>
+                    <div class="feature-card animated-card">
+                        <div class="feature-icon"><i class="fas fa-users"></i></div>
+                        <h3>Seamless Collaboration</h3>
+                        <p>Share tasks, assign responsibilities, and track progress together in real-time.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="testimonials" id="testimonials">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Loved by Professionals Worldwide</h2>
+                    <p>Join thousands of satisfied users who transformed their productivity with TaskFlow.</p>
+                </div>
+                <div class="testimonials-grid">
+                    <div class="testimonial-card animated-card">
+                        <p class="testimonial-text">"TaskFlow has completely changed how I organize my work. I'm twice as productive now!"</p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">JD</div>
+                            <div class="author-info">
+                                <h4>Hassan Raza</h4>
+                                <p>Software Engineer</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card animated-card">
+                        <p class="testimonial-text">"The clean interface and powerful features make task management a breeze. Highly recommended!"</p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">SM</div>
+                            <div class="author-info">
+                                <h4>Hassan</h4>
+                                <p>Project Manager</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card animated-card">
+                        <p class="testimonial-text">"I've tried dozens of task apps, but TaskFlow is the only one that stuck. It just works!"</p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">RJ</div>
+                            <div class="author-info">
+                                <h4>Ahnuf Mir</h4>
+                                <p>Freelancer</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="pricing" id="pricing">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Simple, Transparent Pricing</h2>
+                    <p>Choose the plan that works best for you. Billed monthly or yearly.</p>
+                </div>
+                <div class="pricing-toggle">
+                    <span>Monthly</span>
+                    <label class="switch">
+                        <input type="checkbox" id="pricing-switch">
+                        <span class="slider"></span>
+                    </label>
+                    <span>Yearly (Save 20%)</span>
+                </div>
+                <div class="pricing-grid">
+                    <div class="pricing-card animated-card">
+                        <h3>Free</h3>
+                        <div class="price" data-monthly="0" data-yearly="0">$0 <span>/month</span></div>
+                        <p>Perfect for individuals getting started.</p>
+                        <ul class="pricing-features">
+                            <li>Up to 5 projects</li>
+                            <li>Basic task management</li>
+                            <li>1GB storage</li>
+                            <li>Email support</li>
+                        </ul>
+                        <a href="#" class="btn btn-secondary">Get Started</a>
+                    </div>
+                    <div class="pricing-card popular animated-card">
+                        <h3>Pro</h3>
+                        <div class="price" data-monthly="9" data-yearly="86">$9 <span>/month</span></div>
+                        <p>Ideal for power users and professionals.</p>
+                        <ul class="pricing-features">
+                            <li>Unlimited projects</li>
+                            <li>Advanced task management</li>
+                            <li>10GB storage</li>
+                            <li>Priority support</li>
+                            <li>Team collaboration</li>
+                        </ul>
+                        <a href="#" class="btn">Choose Plan</a>
+                    </div>
+                    <div class="pricing-card animated-card">
+                        <h3>Team</h3>
+                        <div class="price" data-monthly="19" data-yearly="182">$19 <span>/month</span></div>
+                        <p>For teams working together to achieve more.</p>
+                        <ul class="pricing-features">
+                            <li>Unlimited projects</li>
+                            <li>Advanced task management</li>
+                            <li>50GB storage</li>
+                            <li>24/7 dedicated support</li>
+                            <li>Advanced team features</li>
+                        </ul>
+                        <a href="#" class="btn btn-secondary">Choose Plan</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>TaskFlow</h3>
+                    <p>The ultimate task management app designed to help you stay organized and productive.</p>
+                    <div class="social-icons">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#testimonials">Testimonials</a></li>
+                        <li><a href="#pricing">Pricing</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact</h3>
+                    <ul class="footer-links contact-info">
+                        <li><i class="fas fa-envelope"></i> support@taskflow.com</li>
+                        <li><i class="fas fa-phone"></i> +1 (555) 123-4567</li>
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Tech Street, San Francisco, CA</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; <span id="copyright-year"></span> TaskFlow. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
