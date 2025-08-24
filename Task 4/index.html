@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechTales - A Personal Blog</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header id="header">
+        <div class="container header-content">
+            <a href="#" class="blog-title">Hassan's<span>Blogs</span></a>
+            <p class="blog-subtitle">Exploring technology, one story at a time</p>
+        </div>
+    </header>
+
+    <main>
+        <section class="featured-post-section" id="featuredPost"></section>
+
+        <section class="controls">
+            <div class="container controls-content">
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="searchInput" placeholder="Search articles...">
+                </div>
+                <div class="category-filters">
+                    <button class="filter-btn active" data-category="all">All</button>
+                    <button class="filter-btn" data-category="tech">Technology</button>
+                    <button class="filter-btn" data-category="travel">Travel</button>
+                    <button class="filter-btn" data-category="food">Food</button>
+                    <button class="filter-btn" data-category="lifestyle">Lifestyle</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="blog-posts">
+            <div class="container">
+                <div class="posts-grid" id="postsContainer"></div>
+                <div class="pagination" id="pagination"></div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h4>About TechTales</h4>
+                    <p>A personal journey through the worlds of technology, travel, and lifestyle. Sharing insights and stories to inspire and inform.</p>
+                </div>
+                <div class="footer-column">
+                    <h4>Categories</h4>
+                    <ul class="footer-links">
+                        <li><a href="#" class="footer-filter" data-category="tech">Technology</a></li>
+                        <li><a href="#" class="footer-filter" data-category="travel">Travel</a></li>
+                        <li><a href="#" class="footer-filter" data-category="food">Food</a></li>
+                        <li><a href="#" class="footer-filter" data-category="lifestyle">Lifestyle</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Follow Me</h4>
+                    <div class="social-links">
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; <span id="copyright-year"></span> TechTales. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
