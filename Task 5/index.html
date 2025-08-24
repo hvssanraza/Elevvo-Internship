@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CloudFlow - Streamline Your Workflow</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #007bff;
+            --secondary: #6c757d;
+            --text: #212529;
+            --text-light: #6c757d;
+            --bg: #f8f9fa;
+            --bg-card: #ffffff;
+            --border: #dee2e6;
+            --shadow: rgba(0, 0, 0, 0.05);
+            --footer-bg: #212529;
+            --footer-text: #f8f9fa;
+        }
+
+        .dark-mode {
+            --primary: #f97316;
+            --secondary: #ea580c;
+            --text: #f8f9fa;
+            --text-light: #adb5bd;
+            --bg: #121212;
+            --bg-card: #1e1e1e;
+            --border: #404040;
+            --shadow: rgba(0, 0, 0, 0.2);
+            --footer-bg: #0d0d0d;
+            --footer-text: #f8f9fa;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            width: 100%;
+            padding: 15px 0;
+            background-color: transparent;
+            transition: background-color 0.4s ease, backdrop-filter 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        header.scrolled {
+            background-color: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 10px var(--shadow);
+        }
+        
+        .dark-mode header.scrolled {
+            background-color: rgba(30, 30, 30, 0.8);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 26px;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            margin-right: 10px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 35px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 500;
+            position: relative;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--primary);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .theme-toggle {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            width: 50px;
+            height: 26px;
+            border-radius: 13px;
+            cursor: pointer;
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+        
+        .theme-toggle .toggle-circle {
+            background: var(--secondary);
+            height: 20px;
+            width: 20px;
+            border-radius: 50%;
+            position: absolute;
+            left: 2px;
+            transition: transform 0.3s ease;
+        }
+        
+        .dark-mode .theme-toggle .toggle-circle {
+            transform: translateX(24px);
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: var(--primary);
+            color: white;
+            border: 2px solid transparent;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: var(--secondary);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .mobile-nav-toggle { display: none; }
+
+        .hero {
+            padding: 100px 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 56px;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .hero h1 span {
+            color: var(--primary);
+        }
+
+        .hero p {
+            font-size: 20px;
+            color: var(--text-light);
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+        
+        .section {
+            padding: 100px 0;
+        }
+        
+        .section-light {
+            background-color: var(--bg-card);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-title h2 {
+            font-size: 36px;
+            margin-bottom: 15px;
+        }
+        
+        .section-title p {
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 30px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px var(--shadow);
+        }
+
+        .feature-icon {
+            font-size: 24px;
+            width: 60px;
+            height: 60px;
+            background: var(--primary);
+            color: white;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        
+        .feature-card h3 { font-size: 22px; margin-bottom: 15px; }
+        .feature-card p { color: var(--text-light); }
+        
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .testimonial-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+        
+        .testimonial-author { display: flex; align-items: center; }
+        .author-avatar {
+            width: 50px; height: 50px;
+            border-radius: 50%;
+            background-color: var(--primary);
+            color: white;
+            display: flex;
+            align-items: center; justify-content: center;
+            font-weight: 600;
+            margin-right: 15px;
+        }
+        .author-info h4 { font-size: 18px; }
+        .author-info p { color: var(--text-light); font-size: 14px; }
+        
+        .pricing-toggle { display: flex; justify-content: center; align-items: center; gap: 15px; margin-bottom: 40px; font-weight: 500; }
+        .switch { position: relative; display: inline-block; width: 60px; height: 34px; }
+        .switch input { opacity: 0; width: 0; height: 0; }
+        .slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: var(--secondary); transition: .4s; border-radius: 34px; }
+        .slider:before { position: absolute; content: ""; height: 26px; width: 26px; left: 4px; bottom: 4px; background-color: white; transition: .4s; border-radius: 50%; }
+        input:checked + .slider { background-color: var(--primary); }
+        input:checked + .slider:before { transform: translateX(26px); }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            align-items: center;
+        }
+        
+        .pricing-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 40px 30px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .pricing-card.popular {
+            border-color: var(--primary);
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px var(--shadow);
+        }
+        
+        .pricing-card h3 { font-size: 24px; margin-bottom: 15px; }
+        .price { font-size: 48px; font-weight: 700; color: var(--primary); margin-bottom: 10px; }
+        .price span { font-size: 16px; color: var(--text-light); }
+        .pricing-features { list-style: none; margin: 25px 0; text-align: left; }
+        .pricing-features li { margin-bottom: 15px; padding-left: 30px; position: relative; }
+        .pricing-features li::before {
+            content: "\f00c"; font-family: "Font Awesome 6 Free";
+            font-weight: 900; color: var(--primary);
+            position: absolute; left: 0;
+        }
+        
+        .cta {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            text-align: center;
+            border-radius: 12px;
+            padding: 60px 30px;
+        }
+        
+        .cta h2 { font-size: 36px; margin-bottom: 20px; }
+        .cta .btn { background-color: white; color: var(--primary); }
+        
+        footer { background-color: var(--footer-bg); color: var(--footer-text); padding: 60px 0 30px; }
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        .footer-column h3 { font-size: 18px; margin-bottom: 20px; }
+        .footer-links { list-style: none; }
+        .footer-links li { margin-bottom: 12px; }
+        .footer-links a { color: var(--footer-text); text-decoration: none; opacity: 0.8; transition: opacity 0.3s; }
+        .footer-links a:hover { opacity: 1; }
+        .copyright { text-align: center; padding-top: 30px; border-top: 1px solid var(--border); opacity: 0.7; font-size: 14px; }
+        
+        .animated {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .animated.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        @media (max-width: 992px) {
+            .nav-links {
+                position: fixed;
+                top: 0; right: -100%; width: 250px; height: 100vh;
+                background: var(--bg-card);
+                flex-direction: column;
+                padding: 100px 20px 20px;
+                gap: 20px;
+                box-shadow: -5px 0 15px var(--shadow);
+                transition: right 0.4s ease-in-out;
+            }
+            .nav-links.active { right: 0; }
+            .mobile-nav-toggle {
+                display: block; background: none; border: none;
+                color: var(--text); font-size: 24px; cursor: pointer;
+                z-index: 1001;
+            }
+            .header-actions .btn { display: none; }
+            .pricing-card.popular { transform: scale(1); }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 40px; }
+            .hero p { font-size: 18px; }
+            .hero-content { flex-direction: column; text-align: center; }
+            .hero-buttons { justify-content: center; }
+            .hero-image { margin-top: 30px; }
+        }
+    </style>
+</head>
+<body>
+    <header id="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="#" class="logo">
+                    <i class="fas fa-cloud-bolt"></i>
+                    <span>CloudFlow</span>
+                </a>
+                <nav>
+                    <ul class="nav-links" id="navLinks">
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#testimonials">Testimonials</a></li>
+                        <li><a href="#pricing">Pricing</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </nav>
+                <div class="header-actions">
+                    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                        <div class="toggle-circle"></div>
+                    </button>
+                    <a href="#" class="btn">Get Started</a>
+                </div>
+                <button class="mobile-nav-toggle" id="mobileNavToggle" aria-label="Toggle navigation">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero animated">
+            <div class="container">
+                <div class="hero-content">
+                    <div class="hero-text">
+                        <h1>Your Workflow, <span>Perfected</span>.</h1>
+                        <p>CloudFlow is the all-in-one platform that brings your team, tools, and projects together in one seamless, intelligent workspace.</p>
+                        <div class="hero-buttons">
+                            <a href="#pricing" class="btn">Start Free Trial</a>
+                        </div>
+                    </div>
+                    <div class="hero-image">
+                        <img src="https://images.unsplash.com/photo-1531403009284-440f080d1e12?auto=format&fit=crop&w=1170&q=80" alt="CloudFlow Dashboard Interface">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="features" class="features section section-light">
+            <div class="container">
+                <div class="section-title animated">
+                    <h2>Everything You Need, Nothing You Don't</h2>
+                    <p>Powerful features designed to eliminate friction and maximize your team's potential.</p>
+                </div>
+                <div class="features-grid">
+                    <div class="feature-card animated">
+                        <div class="feature-icon"><i class="fas fa-tasks"></i></div>
+                        <h3>Task Management</h3>
+                        <p>Create, assign, and track tasks with our intuitive drag-and-drop interface.</p>
+                    </div>
+                    <div class="feature-card animated">
+                        <div class="feature-icon"><i class="fas fa-users"></i></div>
+                        <h3>Team Collaboration</h3>
+                        <p>Work together in real-time with comments, file sharing, and integrated chat.</p>
+                    </div>
+                    <div class="feature-card animated">
+                        <div class="feature-icon"><i class="fas fa-chart-pie"></i></div>
+                        <h3>Advanced Analytics</h3>
+                        <p>Gain insights into your team's performance with detailed reports and dashboards.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="testimonials" class="testimonials section">
+            <div class="container">
+                <div class="section-title animated">
+                    <h2>Trusted by Innovative Teams</h2>
+                    <p>See why teams at world-class companies choose CloudFlow to get work done.</p>
+                </div>
+                <div class="testimonials-grid">
+                    <div class="testimonial-card animated">
+                        <p class="testimonial-text">"CloudFlow has revolutionized our project management. The ability to see everything in one place is a game-changer for our productivity."</p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">HR</div>
+                            <div class="author-info">
+                                <h4>Hassan Raza</h4>
+                                <p>Lead Developer, Tech Innovators</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card animated">
+                        <p class="testimonial-text">"The intuitive design and seamless integrations make it the best workflow tool we've ever used. Our team collaboration has never been stronger."</p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">AM</div>
+                            <div class="author-info">
+                                <h4>Ahnuf Mir</h4>
+                                <p>Product Manager, Creative Solutions</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card animated">
+                        <p class="testimonial-text">"An essential tool for any remote team. The analytics are powerful, and the user interface is simply beautiful. Highly recommended!"</p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">H</div>
+                            <div class="author-info">
+                                <h4>Hassan</h4>
+                                <p>Founder, NextGen Startups</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="pricing" class="pricing section section-light">
+            <div class="container">
+                <div class="section-title animated">
+                    <h2>Find the Perfect Plan</h2>
+                    <p>Choose a plan that scales with your team. All plans start with a 14-day free trial.</p>
+                </div>
+                <div class="pricing-toggle animated">
+                    <span>Monthly</span>
+                    <label class="switch">
+                        <input type="checkbox" id="pricingSwitch">
+                        <span class="slider"></span>
+                    </label>
+                    <span>Yearly (Save 25%)</span>
+                </div>
+                <div class="pricing-grid">
+                    <div class="pricing-card animated">
+                        <h3>Starter</h3>
+                        <div class="price" data-monthly="19" data-yearly="170">$19 <span>/month</span></div>
+                        <ul class="pricing-features">
+                            <li>Up to 10 users</li>
+                            <li>5GB storage</li>
+                            <li>Basic task management</li>
+                            <li>Email support</li>
+                        </ul>
+                        <a href="#" class="btn">Get Started</a>
+                    </div>
+                    <div class="pricing-card popular animated">
+                        <h3>Professional</h3>
+                        <div class="price" data-monthly="49" data-yearly="440">$49 <span>/month</span></div>
+                        <ul class="pricing-features">
+                            <li>Up to 50 users</li>
+                            <li>50GB storage</li>
+                            <li>Advanced analytics</li>
+                            <li>Priority support</li>
+                            <li>API access</li>
+                        </ul>
+                        <a href="#" class="btn">Get Started</a>
+                    </div>
+                    <div class="pricing-card animated">
+                        <h3>Enterprise</h3>
+                        <div class="price" data-monthly="99" data-yearly="890">$99 <span>/month</span></div>
+                        <ul class="pricing-features">
+                            <li>Unlimited users</li>
+                            <li>250GB storage</li>
+                            <li>Customizable features</li>
+                            <li>24/7 dedicated support</li>
+                            <li>Single sign-on (SSO)</li>
+                        </ul>
+                        <a href="#" class="btn">Contact Sales</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container animated">
+                <div class="cta">
+                    <h2>Ready to Elevate Your Workflow?</h2>
+                    <a href="#" class="btn">Start Your Free Trial Today</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>CloudFlow</h3>
+                    <p>The all-in-one platform for project management and team collaboration.</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Product</h3>
+                    <ul class="footer-links">
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#pricing">Pricing</a></li>
+                        <li><a href="#">Integrations</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Company</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; <span id="copyright-year"></span> CloudFlow. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            const initThemeToggle = () => {
+                const themeToggle = document.getElementById('themeToggle');
+                const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+                const savedTheme = localStorage.getItem('theme');
+
+                if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+                    document.body.classList.add('dark-mode');
+                }
+
+                themeToggle.addEventListener('click', () => {
+                    document.body.classList.toggle('dark-mode');
+                    localStorage.setItem('theme', document.body.classList.contains('dark-mode') ? 'dark' : 'light');
+                });
+            };
+
+            const initHeaderScroll = () => {
+                const header = document.getElementById('header');
+                window.addEventListener('scroll', () => {
+                    header.classList.toggle('scrolled', window.scrollY > 50);
+                });
+            };
+
+            const initMobileNav = () => {
+                const navToggle = document.getElementById('mobileNavToggle');
+                const navLinks = document.getElementById('navLinks');
+                navToggle.addEventListener('click', () => navLinks.classList.toggle('active'));
+                navLinks.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', () => navLinks.classList.remove('active'));
+                });
+            };
+
+            const initScrollAnimations = () => {
+                const animatedElements = document.querySelectorAll('.animated');
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('visible');
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.1 });
+                animatedElements.forEach(el => observer.observe(el));
+            };
+
+            const initPricingToggle = () => {
+                const pricingSwitch = document.getElementById('pricingSwitch');
+                if (!pricingSwitch) return;
+                
+                pricingSwitch.addEventListener('change', () => {
+                    const isYearly = pricingSwitch.checked;
+                    document.querySelectorAll('.price').forEach(priceEl => {
+                        const monthly = priceEl.getAttribute('data-monthly');
+                        const yearly = priceEl.getAttribute('data-yearly');
+                        priceEl.innerHTML = isYearly ? `$${yearly} <span>/year</span>` : `$${monthly} <span>/month</span>`;
+                    });
+                });
+            };
+            
+            const updateCopyrightYear = () => {
+                const yearSpan = document.getElementById('copyright-year');
+                if(yearSpan) yearSpan.textContent = new Date().getFullYear();
+            };
+
+            initThemeToggle();
+            initHeaderScroll();
+            initMobileNav();
+            initScrollAnimations();
+            initPricingToggle();
+            updateCopyrightYear();
+        });
+    </script>
+</body>
+</html>
