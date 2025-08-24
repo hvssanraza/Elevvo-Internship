@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Contact Form</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="form-header">
+            <h1>Get In Touch</h1>
+            <p>We'd love to hear from you! Send us a message.</p>
+        </div>
+        
+        <form class="contact-form" id="contactForm" novalidate>
+            <div class="form-row">
+                <div class="form-group">
+                    <i class="form-icon fas fa-user"></i>
+                    <label for="fullName" class="form-label">Full Name</label>
+                    <input type="text" id="fullName" class="form-input" placeholder="Your full name" required>
+                    <div class="error-message" id="nameError">Please enter your full name</div>
+                </div>
+                
+                <div class="form-group">
+                    <i class="form-icon fas fa-envelope"></i>
+                    <label for="email" class="form-label">Email Address</label>
+                    <input type="email" id="email" class="form-input" placeholder="Your email address" required>
+                    <div class="error-message" id="emailError">Please enter a valid email address</div>
+                </div>
+            </div>
+            
+            <div class="form-row">
+                <div class="form-group full-width">
+                    <i class="form-icon fas fa-tag"></i>
+                    <label for="subject" class="form-label">Subject</label>
+                    <input type="text" id="subject" class="form-input" placeholder="What is this regarding?" required>
+                    <div class="error-message" id="subjectError">Please enter a subject</div>
+                </div>
+            </div>
+            
+            <div class="form-row">
+                <div class="form-group full-width">
+                    <i class="form-icon fas fa-comment-dots"></i>
+                    <label for="message" class="form-label">Message</label>
+                    <textarea id="message" class="form-input" placeholder="Your message..." required></textarea>
+                    <div class="error-message" id="messageError">Please enter your message</div>
+                </div>
+            </div>
+            
+            <button type="submit" class="submit-btn" id="submitBtn">
+                <span class="btn-text">Send Message</span>
+                <i class="btn-icon fas fa-paper-plane"></i>
+                <div class="spinner"></div>
+            </button>
+            
+            <div class="success-message" id="successMessage" aria-live="polite">
+                <i class="fas fa-check-circle"></i>
+                <span id="successText"></span>
+            </div>
+        </form>
+    </div>
+
+    <script src="script.js" defer></script>
+</body>
+</html>
